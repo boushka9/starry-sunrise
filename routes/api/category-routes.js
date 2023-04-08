@@ -1,16 +1,55 @@
 const router = require('express').Router();
+// const { Model } = require('sequelize/types');
 const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
 router.get('/', (req, res) => {
-  // find all categories
-  // be sure to include its associated Products
+  // find all categories & associated Products
+  Category.findAll({
+    attributes: [
+      'id',
+      'category_name'
+    ],
+    include: [
+      {
+        model: Product,
+        attributes: [
+          'id',
+          'product_name',
+          'price',
+          'stock',
+          'category_id'
+        ]
+      }
+      
+    ]
+  }).then((categoryData) => res.json(categoryData))
 });
 
 router.get('/:id', (req, res) => {
-  // find one category by its `id` value
-  // be sure to include its associated Products
+  // find one category by its `id` value + its associated Products
+  Category.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'category_name'
+    ],
+    include: [
+      {
+        model: Product,
+        attributes: [
+          'id',
+          'product_name',
+          'price',
+          'stock',
+          'category_id'
+        ]
+      }
+    ]
+  }).then((categoryData) => res.json(categoryData))
 });
 
 router.post('/', (req, res) => {
