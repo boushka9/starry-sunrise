@@ -25,6 +25,10 @@ router.get('/', (req, res) => {
       
     ]
   }).then((categoryData) => res.json(categoryData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.get('/:id', (req, res) => {
@@ -50,10 +54,28 @@ router.get('/:id', (req, res) => {
       }
     ]
   }).then((categoryData) => res.json(categoryData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.post('/', (req, res) => {
   // create a new category
+  /*
+  Input the following into Insomnia:
+  {
+    "category_name": "Accessories"
+  }
+  */
+  Category.create({
+    category_name: req.body.category_name
+  })
+  .then((categoryData) => res.json(categoryData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.put('/:id', (req, res) => {
