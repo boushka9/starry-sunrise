@@ -62,10 +62,12 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   // create a new category
-  // Input the following into Insomnia:
-  // {
-  //   "category_name": "Accessories"
-  // }
+  /*
+  Input the following into Insomnia:
+  {
+    "category_name": "Accessories"
+  }
+  */
   Category.create({
     category_name: req.body.category_name
   })
