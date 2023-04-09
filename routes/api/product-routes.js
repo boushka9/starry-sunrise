@@ -7,6 +7,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 router.get('/', (req, res) => {
   // find all products & associated Category and Tag data
   Product.findAll({
+    // Include following attributes in JSON res
     attributes: [
       'id',
       'product_name',
@@ -14,6 +15,7 @@ router.get('/', (req, res) => {
       'stock',
       'category_id'
     ],
+    // From models through foreign keys defined in model index, include:
     include: [
       {
         model: Category,
@@ -36,11 +38,12 @@ router.get('/', (req, res) => {
 
 // get one product
 router.get('/:id', (req, res) => {
-  // find a single product by its `id` + its associated Category and Tag data
+  // find a single product where it's id = /:id
   Product.findOne({
     where: {
       id: req.params.id
     },
+    // Include following attributes in JSON res
     attributes: [
       'id',
       'product_name',
@@ -48,6 +51,7 @@ router.get('/:id', (req, res) => {
       'stock',
       'category_id'
     ],
+    // include its associated Category and Tag data
     include: [
       {
         model: Category,

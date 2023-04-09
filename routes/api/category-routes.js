@@ -7,10 +7,12 @@ const { Category, Product } = require('../../models');
 router.get('/', (req, res) => {
   // find all categories & associated Products
   Category.findAll({
+    // Include following attributes in JSON res
     attributes: [
       'id',
       'category_name'
     ],
+    // From models through foreign keys defined in model index, include:
     include: [
       {
         model: Product,
@@ -32,15 +34,17 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  // find one category by its `id` value + its associated Products
+  // find one category where it's id = /:id
   Category.findOne({
     where: {
       id: req.params.id
     },
+    // Include following attributes in JSON res
     attributes: [
       'id',
       'category_name'
     ],
+    // include its associated Product info
     include: [
       {
         model: Product,
