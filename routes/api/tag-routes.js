@@ -77,7 +77,22 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  // update a tag's name by its `id` value
+  // update a tag's name by its `id` 
+  /* input /api/tags/:id and to change that tag name to:
+  {
+	"tag_name": "Sporty"
+  }
+  */
+  Tag.update(req.body, {
+    where: {
+      id: req.params.id
+    }
+  })
+  .then((tagData) => res.json(tagData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.delete('/:id', (req, res) => {
