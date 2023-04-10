@@ -24,8 +24,11 @@
   ```
   
   Next, open the integrated terminal and run 'npm i' to install the dependancies. 
+  
   Next, enter your access info for MySQL and run 'SOURCE schema.sql' (if you open the integrated terminal from the root, you will have to enter './db/schema.sql;' instead). 
+  
   Then type 'USE ecommerce_db' to initiallize the database. Next open a new terminal tab and type 'npm run watch' to start the database with nodemon, or 'npm run start' to initialize with node. 
+  
   Then, open another terminal tab and type 'npm run seed' to seed the database once the server is running.
 
   ## Usage
@@ -34,8 +37,13 @@
 
   From the root URL of 'http://localhost:3001/api/' you can access the API data of the tables for 'Categories', 'Products', and 'Tags'.
 
-  To test GET requests for all data from each table, input the table name after 'api/' (EX: 'api/categories', 'api/products', or 'api/tags').
-  To test GET requests for an individual item by it's ID, input the table name followd by the desired item's ID (EX: 'api/products/5').
+  To test GET requests for all data from each table, input the table name after 'api/'. 
+  
+  (EX: 'api/categories', 'api/products', or 'api/tags')
+  
+  To test GET requests for an individual item by it's ID, input the table name followd by the desired item's ID.
+  
+  (EX: 'api/products/5').
 
   ![](public/images/get-id.gif)
 
@@ -87,16 +95,10 @@
   ## Badges
 
   ![Ask me: anything](https://img.shields.io/badge/ask%20me-anything-1abc9c.svg)
+  
   ![Made with: JavaScript](https://img.shields.io/badge/made%20with-JavaScript-blue)
+  
   ![Made with: MySQL](https://img.shields.io/badge/Made%20with-MySQL-purple)
-
-  ## How to Contribute
-
-  N/A
-
-  ## Tests
-
-  N/A
 
   ## Questions
 
